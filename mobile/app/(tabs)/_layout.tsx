@@ -2,9 +2,10 @@ import React from 'react';
 import { Tabs } from 'expo-router';
 import { useTheme } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AppIcons } from '@/src/constants';
 
 /**
- * Bottom Tabs layout coordinating index, map, complaint, sos, and profile routes.
+ * Bottom Tabs layout coordinating index, heatmap, complaint, sos, and profile routes.
  */
 export default function TabLayout() {
   const theme = useTheme();
@@ -21,10 +22,7 @@ export default function TabLayout() {
           height: 60,
           paddingBottom: 8,
         },
-        headerStyle: {
-          backgroundColor: theme.colors.surface,
-        },
-        headerTintColor: theme.colors.onSurface,
+        headerShown: false, // We use custom AppHeader components on each tab screen
       }}
     >
       <Tabs.Screen
@@ -33,27 +31,17 @@ export default function TabLayout() {
           title: 'Home',
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home-outline" color={color} size={size} />
+            <MaterialCommunityIcons name={AppIcons.home as any} color={color} size={size} />
           ),
         }}
       />
       <Tabs.Screen
-        name="map"
+        name="heatmap"
         options={{
-          title: 'Safety Map',
-          tabBarLabel: 'Map',
+          title: 'Heatmap',
+          tabBarLabel: 'Heatmap',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="map-outline" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="complaint"
-        options={{
-          title: 'Complaints',
-          tabBarLabel: 'Complaints',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="alert-box-outline" color={color} size={size} />
+            <MaterialCommunityIcons name={AppIcons.heatmap as any} color={color} size={size} />
           ),
         }}
       />
@@ -63,7 +51,17 @@ export default function TabLayout() {
           title: 'Emergency SOS',
           tabBarLabel: 'SOS',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="alert-octagon" color={color} size={size} />
+            <MaterialCommunityIcons name={AppIcons.emergencyTab as any} color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="complaint"
+        options={{
+          title: 'Complaints',
+          tabBarLabel: 'Complaints',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name={AppIcons.complaintTab as any} color={color} size={size} />
           ),
         }}
       />
@@ -73,7 +71,7 @@ export default function TabLayout() {
           title: 'My Profile',
           tabBarLabel: 'Profile',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account-outline" color={color} size={size} />
+            <MaterialCommunityIcons name={AppIcons.profileTab as any} color={color} size={size} />
           ),
         }}
       />

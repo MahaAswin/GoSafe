@@ -1,74 +1,64 @@
 import React from 'react';
 import { StyleSheet, ScrollView, View, Alert } from 'react-native';
-import { Card, Text, Avatar, List, useTheme, Divider } from 'react-native-paper';
+import { Avatar, List, useTheme } from 'react-native-paper';
+import { AppHeader } from '@/src/components/common/AppHeader';
+import { AppCard } from '@/src/components/common/AppCard';
+import { AppText } from '@/src/components/common/AppText';
+import { Divider } from '@/src/components/common/Divider';
 import { ProfilePlaceholder } from '@/src/assets';
+import { Spacing } from '@/src/theme/spacing';
 
-/**
- * Profile screen displaying user metadata settings, policies, and system support info.
- */
 export default function ProfileScreen() {
   const theme = useTheme();
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]}>
-      {/* 1. Header User Profile Metadata Panel */}
-      <View style={styles.header}>
-        <Avatar.Image size={72} source={ProfilePlaceholder} style={{ backgroundColor: 'transparent' }} />
-        <Text variant="titleLarge" style={styles.name}>John Doe</Text>
-        <Text variant="bodyMedium" style={styles.email}>john.doe@example.com</Text>
-      </View>
+    <View style={styles.container}>
+      <AppHeader title="User Profile" />
+      
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* User panel */}
+        <View style={styles.header}>
+          <Avatar.Image size={80} source={ProfilePlaceholder} style={{ backgroundColor: 'transparent' }} />
+          <AppText variant="titleLarge" style={styles.name}>
+            John Doe
+          </AppText>
+          <AppText variant="bodyMedium" textColor={theme.colors.onSurfaceVariant}>
+            john.doe@example.com
+          </AppText>
+        </View>
 
-      {/* 2. Settings Category Options List */}
-      <Card style={styles.card}>
-        <List.Section>
-          <List.Subheader>Account Settings</List.Subheader>
-          <List.Item
-            title="Notification Preferences"
-            description="Manage mobile push trigger schedules"
-            left={(props) => <List.Icon {...props} icon="bell-ring-outline" />}
-            right={(props) => <List.Icon {...props} icon="chevron-right" />}
-            onPress={() => Alert.alert('Notifications', 'Preferences config is not implemented.')}
-          />
-          <Divider />
-          <List.Item
-            title="Trusted Contacts List"
-            description="Edit priority numbers of family links"
-            left={(props) => <List.Icon {...props} icon="account-multiple-outline" />}
-            right={(props) => <List.Icon {...props} icon="chevron-right" />}
-            onPress={() => Alert.alert('Trusted Contacts', 'Contacts management is not implemented.')}
-          />
-          <Divider />
-          <List.Item
-            title="Privacy and Security"
-            description="Permissions settings control"
-            left={(props) => <List.Icon {...props} icon="shield-lock-outline" />}
-            right={(props) => <List.Icon {...props} icon="chevron-right" />}
-            onPress={() => Alert.alert('Security', 'Security settings dashboard is not implemented.')}
-          />
-        </List.Section>
-      </Card>
+        {/* Profile Settings */}
+        <AppCard style={styles.card}>
+          <List.Section style={styles.listSection}>
+            <List.Subheader>Account Settings</List.Subheader>
+            <List.Item
+              title="Notification Settings"
+              description="Configure area warning alerts triggers"
+              left={(props) => <List.Icon {...props} icon="bell-outline" />}
+              onPress={() => Alert.alert('Account Settings', 'Routing to notification panels in Phase 2.')}
+            />
+            <Divider />
+            <List.Item
+              title="Trusted Guardians"
+              description="Manage priority emergency contact links"
+              left={(props) => <List.Icon {...props} icon="account-group-outline" />}
+              onPress={() => Alert.alert('Guardians', 'Guardian listings will load in Phase 2.')}
+            />
+          </List.Section>
+        </AppCard>
 
-      {/* 3. About Specifications Panel */}
-      <Card style={styles.card}>
-        <List.Section>
-          <List.Subheader>About Application</List.Subheader>
-          <List.Item
-            title="Version"
-            description="1.0.0 (Build 124)"
-            left={(props) => <List.Icon {...props} icon="information-outline" />}
-          />
-          <Divider />
-          <List.Item
-            title="Help & Safety Center"
-            description="Access safety manual lists and guides"
-            left={(props) => <List.Icon {...props} icon="help-circle-outline" />}
-            right={(props) => <List.Icon {...props} icon="chevron-right" />}
-            onPress={() => Alert.alert('Support Hub', 'Connecting safety support catalog.')}
-          />
-        </List.Section>
-      </Card>
-      <View style={{ height: 40 }} />
-    </ScrollView>
+        <AppCard style={styles.card}>
+          <List.Section style={styles.listSection}>
+            <List.Subheader>App Metadata</List.Subheader>
+            <List.Item
+              title="Software Version"
+              description="1.0.0 (Foundation Build)"
+              left={(props) => <List.Icon {...props} icon="information-outline" />}
+            />
+          </List.Section>
+        </AppCard>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -76,23 +66,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  scrollContent: {
+    padding: Spacing.lg,
+  },
   header: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 24,
+    paddingVertical: Spacing.xl,
   },
   name: {
     fontWeight: 'bold',
-    marginTop: 12,
-  },
-  email: {
-    color: 'gray',
-    marginTop: 4,
+    marginTop: Spacing.md,
   },
   card: {
-    marginHorizontal: 16,
-    marginBottom: 16,
-    borderRadius: 8,
-    overflow: 'hidden',
+    marginBottom: Spacing.md,
+  },
+  listSection: {
+    marginVertical: 0,
   },
 });
