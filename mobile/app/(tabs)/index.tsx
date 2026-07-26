@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, ScrollView, View } from 'react-native';
-import { Card, Text, Button, useTheme, Avatar } from 'react-native-paper';
+import { StyleSheet, ScrollView, View, Image } from 'react-native';
+import { Card, Text, Button, useTheme } from 'react-native-paper';
 import { router } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { GoSafeLogo } from '@/src/assets';
 
 /**
  * Home dashboard displaying welcome card, quick actions, recent alerts, and emergency banners.
@@ -26,7 +27,7 @@ export default function HomeScreen() {
             <Text variant="headlineSmall" style={styles.bold}>GoSafe</Text>
             <Text variant="bodyMedium">React Native + Expo is running successfully.</Text>
           </View>
-          <Avatar.Icon size={48} icon="shield-check" style={{ backgroundColor: theme.colors.primary }} />
+          <Image source={GoSafeLogo} style={styles.logo} />
         </Card.Content>
       </Card>
 
@@ -90,6 +91,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+  },
+  logo: {
+    width: 48,
+    height: 48,
+    borderRadius: 8,
+    resizeMode: 'contain',
+    backgroundColor: '#ffffff',
   },
   card: {
     marginBottom: 16,

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, ScrollView, View, Alert } from 'react-native';
 import { Card, Text, Avatar, List, useTheme, Divider } from 'react-native-paper';
+import { ProfilePlaceholder } from '@/src/assets';
 
 /**
  * Profile screen displaying user metadata settings, policies, and system support info.
@@ -12,7 +13,7 @@ export default function ProfileScreen() {
     <ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]}>
       {/* 1. Header User Profile Metadata Panel */}
       <View style={styles.header}>
-        <Avatar.Text size={72} label="JD" style={{ backgroundColor: theme.colors.primary }} />
+        <Avatar.Image size={72} source={ProfilePlaceholder} style={{ backgroundColor: 'transparent' }} />
         <Text variant="titleLarge" style={styles.name}>John Doe</Text>
         <Text variant="bodyMedium" style={styles.email}>john.doe@example.com</Text>
       </View>

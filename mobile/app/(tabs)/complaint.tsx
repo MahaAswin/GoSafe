@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
-import { Card, Text, FAB, useTheme, ActivityIndicator, List } from 'react-native-paper';
+import { StyleSheet, View, FlatList, Image } from 'react-native';
+import { Card, Text, FAB, useTheme, List } from 'react-native-paper';
+import { EmptyStateIllustration } from '@/src/assets';
+import { LoadingView } from '@/src/components/LoadingView';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 /**
@@ -37,19 +39,14 @@ export default function ComplaintScreen() {
 
   // Render when loading is active
   if (isLoading) {
-    return (
-      <View style={[styles.center, { backgroundColor: theme.colors.background }]}>
-        <ActivityIndicator size="large" color={theme.colors.primary} />
-        <Text style={styles.loadingText}>Fetching local complaints...</Text>
-      </View>
-    );
+    return <LoadingView message="Fetching local complaints..." />;
   }
 
   // Render when list is empty
   if (complaints.length === 0) {
     return (
       <View style={[styles.center, { backgroundColor: theme.colors.background }]}>
-        <MaterialCommunityIcons name="clipboard-text-off-outline" size={64} color="gray" />
+        <Image source={EmptyStateIllustration} style={styles.emptyStateImage} />
         <Text variant="titleMedium" style={styles.emptyTitle}>No Complaints Logged</Text>
         <Text style={styles.emptySubtitle}>Tap the floating button below to report local issues.</Text>
       </View>
@@ -139,6 +136,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 24,
+  },
+  emptyStateImage: {
+    width: 150,
+    height: 150,
+    marginBottom: 16,
+    resizeMode: 'contain',
   },
   loadingText: {
     marginTop: 12,
