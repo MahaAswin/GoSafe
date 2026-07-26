@@ -32,6 +32,17 @@ build/
 ### VS Code ###
 .vscode/
 
-### Backend Environment variables ###
+### Mobile React Native & Expo ###
+mobile/node_modules/
+mobile/.expo/
+mobile/dist/
+mobile/npm-debug.log*
+mobile/yarn-debug.log*
+mobile/yarn-error.log*
+
+### Global Environment Variables Ignores ###
 .env
 .env*.local
+**/.env
+**/.env*.local
+
