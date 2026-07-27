@@ -5,7 +5,7 @@ import com.gosafe.backend.map.dto.LocationDto;
 import com.gosafe.backend.map.dto.MapLocationResponseDto;
 import com.gosafe.backend.map.dto.SafeRouteResponseDto;
 import com.gosafe.backend.map.service.MapService;
-import com.gosafe.backend.shared.response.ApiResponse;
+import com.gosafe.backend.common.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

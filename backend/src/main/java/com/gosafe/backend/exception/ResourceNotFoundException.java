@@ -1,8 +1,5 @@
-package com.gosafe.backend.shared.exception;
+package com.gosafe.backend.exception;
 
-/**
- * Exception thrown when a requested resource is not found in the database.
- */
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {
         super(message);

@@ -7,7 +7,7 @@ import com.gosafe.backend.complaint.enums.ComplaintStatus;
 import com.gosafe.backend.complaint.mapper.ComplaintMapper;
 import com.gosafe.backend.complaint.repository.ComplaintRepository;
 import com.gosafe.backend.complaint.service.ComplaintService;
-import com.gosafe.backend.shared.exception.ResourceNotFoundException;
+import com.gosafe.backend.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

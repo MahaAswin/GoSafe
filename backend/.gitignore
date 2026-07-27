@@ -35,3 +35,7 @@ build/
 ### Backend Environment variables ###
 .env
 .env*.local
+
+### Local logs ###
+logs/
+

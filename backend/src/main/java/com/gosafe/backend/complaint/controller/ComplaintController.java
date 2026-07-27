@@ -3,7 +3,7 @@ package com.gosafe.backend.complaint.controller;
 import com.gosafe.backend.complaint.dto.ComplaintRequestDTO;
 import com.gosafe.backend.complaint.dto.ComplaintResponseDTO;
 import com.gosafe.backend.complaint.service.ComplaintService;
-import com.gosafe.backend.shared.response.ApiResponse;
+import com.gosafe.backend.common.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
