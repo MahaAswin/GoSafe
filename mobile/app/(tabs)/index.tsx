@@ -235,6 +235,66 @@ export default function HomeScreen() {
           </AppCard>
         </Animated.View>
 
+        {/* FLAGSHIP FEATURE: Community Connect Banner */}
+        <Animated.View entering={FadeInDown.duration(400).delay(180)}>
+          <AppCard style={styles.communityBannerCard}>
+            <View style={styles.bannerHeader}>
+              <View style={styles.bannerIconWrapper}>
+                <MaterialCommunityIcons name="shield-account" size={24} color="#5E35B1" />
+              </View>
+              <View style={styles.bannerInfo}>
+                <View style={styles.bannerBadge}>
+                  <AppText variant="caption" style={styles.bannerBadgeText}>FLAGSHIP SAFETY MESH</AppText>
+                </View>
+                <AppText variant="titleMedium" style={styles.bold}>
+                  Community Connect
+                </AppText>
+                <AppText variant="bodySmall" style={styles.bannerDesc} textColor={theme.colors.onSurfaceVariant}>
+                  Opt-in to securely view, chat, and alert verified neighbors and doctors near you during emergencies.
+                </AppText>
+              </View>
+            </View>
+            <AppButton
+              mode="contained"
+              buttonColor="#5E35B1"
+              onPress={() => router.push('/community-connect')}
+              style={styles.bannerBtn}
+            >
+              Enter Mesh Network
+            </AppButton>
+          </AppCard>
+        </Animated.View>
+
+        {/* NEW FEATURE: AI Safety Intelligence Banner */}
+        <Animated.View entering={FadeInDown.duration(400).delay(190)}>
+          <AppCard style={styles.aiBannerCard}>
+            <View style={styles.bannerHeader}>
+              <View style={[styles.bannerIconWrapper, { backgroundColor: '#0D47A115' }]}>
+                <MaterialCommunityIcons name="brain" size={24} color="#0D47A1" />
+              </View>
+              <View style={styles.bannerInfo}>
+                <View style={[styles.bannerBadge, { backgroundColor: '#0D47A1' }]}>
+                  <AppText variant="caption" style={styles.bannerBadgeText}>AI SAFETY INTELLIGENCE</AppText>
+                </View>
+                <AppText variant="titleMedium" style={styles.bold}>
+                  Safety Intelligence
+                </AppText>
+                <AppText variant="bodySmall" style={styles.bannerDesc} textColor={theme.colors.onSurfaceVariant}>
+                  Explore predictive diagnostics, neighborhood safety indices, and real-time danger forecast maps.
+                </AppText>
+              </View>
+            </View>
+            <AppButton
+              mode="contained"
+              buttonColor="#0D47A1"
+              onPress={() => router.push('/ai-intelligence')}
+              style={styles.bannerBtn}
+            >
+              Analyze Safety Score
+            </AppButton>
+          </AppCard>
+        </Animated.View>
+
         {/* SECTION 4: Quick Actions Grid */}
         <AppText variant="titleMedium" style={[styles.sectionTitle, styles.bold]}>
           Quick Actions
@@ -303,7 +363,7 @@ export default function HomeScreen() {
           <Animated.View entering={FadeInDown.duration(400).delay(350)} style={styles.gridItem}>
             <AppCard style={styles.gridCard}>
               <TouchableRipple
-                onPress={() => Alert.alert('Safe Route', 'Finding hazard-free path routes.')}
+                onPress={() => router.push('/safe-route')}
                 rippleColor="rgba(13, 71, 161, 0.1)"
                 style={styles.gridRipple}
               >
@@ -409,6 +469,15 @@ export default function HomeScreen() {
 
         <View style={{ height: Spacing.huge }} />
       </ScrollView>
+
+      {/* FLOATING ACTION TRIGGER: AI Assistant Copilot */}
+      <TouchableOpacity
+        activeOpacity={0.85}
+        onPress={() => router.push('/ai-assistant')}
+        style={[styles.floatingAiFab, { backgroundColor: theme.colors.primary }]}
+      >
+        <MaterialCommunityIcons name="brain" size={24} color="#FFF" />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -638,5 +707,74 @@ const styles = StyleSheet.create({
   tipsText: {
     flex: 1,
     marginLeft: Spacing.md,
+  },
+  communityBannerCard: {
+    padding: Spacing.md,
+    marginTop: Spacing.sm,
+    marginBottom: Spacing.md,
+    borderColor: 'rgba(94, 53, 177, 0.15)',
+    borderWidth: 1.5,
+    backgroundColor: '#EDE7F6',
+  },
+  aiBannerCard: {
+    padding: Spacing.md,
+    marginTop: Spacing.sm,
+    marginBottom: Spacing.md,
+    borderColor: 'rgba(13, 71, 161, 0.15)',
+    borderWidth: 1.5,
+    backgroundColor: '#E1F5FE',
+  },
+  bannerHeader: {
+    flexDirection: 'row',
+  },
+  bannerIconWrapper: {
+    width: 44,
+    height: 44,
+    borderRadius: Radius.circular,
+    backgroundColor: '#5E35B115',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: Spacing.md,
+  },
+  bannerInfo: {
+    flex: 1,
+  },
+  bannerBadge: {
+    backgroundColor: '#5E35B1',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: Radius.small,
+    alignSelf: 'flex-start',
+    marginBottom: 4,
+  },
+  bannerBadgeText: {
+    color: '#FFF',
+    fontSize: 8,
+    fontWeight: 'bold',
+  },
+  bannerDesc: {
+    marginTop: 4,
+    lineHeight: 16,
+  },
+  bannerBtn: {
+    marginTop: Spacing.md,
+    height: 40,
+    justifyContent: 'center',
+  },
+  floatingAiFab: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 6,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    zIndex: 99,
   },
 });

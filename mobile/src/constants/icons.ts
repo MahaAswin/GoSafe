@@ -43,7 +43,7 @@ export const AppIcons = {
   friend: 'account-star',
 
   // Safety Feed / Threat categories
-  accident: 'alert-octagon',
+  accident: 'car-emergency',
   lightFailure: 'lightbulb-off',
   flood: 'water',
   suspicious: 'eye-off',
